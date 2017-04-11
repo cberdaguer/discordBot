@@ -31,6 +31,7 @@ async def on_message(message):
         i = 0
         while i < 20:
             await client.send_message(message.channel, '!randbm')
+            await asyncio.sleep(2)
             i += 1
 
 client.run('MzAxMjczMjQ5Nzc2NjY0NTc3.C84tlw.Yq3HK7ZlLmIcocUgw5ByGtEdJM4')
