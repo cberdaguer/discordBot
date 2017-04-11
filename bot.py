@@ -27,4 +27,10 @@ async def on_message(message):
     elif message.content.startswith('!nord'):
         await client.send_message(message.channel, 'Les gens du nord sont mon gagne pain, continuez de pondre mes amis cassos, continuez !')
 
+    elif message.content.startswith('!sortezleveineux'):
+        i = 0
+        while i < 20:
+            await client.send_message(message.channel, '!randbm')
+            i += 1
+
 client.run('MzAxMjczMjQ5Nzc2NjY0NTc3.C84tlw.Yq3HK7ZlLmIcocUgw5ByGtEdJM4')
