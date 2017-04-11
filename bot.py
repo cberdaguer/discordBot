@@ -30,7 +30,7 @@ async def on_message(message):
     elif message.content.startswith('!mercipascal'):
         i = 0
         while i < 20:
-            await client.send_message(message.channel, '!randbm')
+            await client.send_message(message.channel, '!rand')
             await asyncio.sleep(2)
             i += 1
 
