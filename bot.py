@@ -29,9 +29,9 @@ async def on_message(message):
 
     elif message.content.startswith('!mercipascal'):
         i = 0
-        while i < 20:
+        while i < 5:
             await client.send_message(message.channel, '!rand')
-            await asyncio.sleep(2)
+            await asyncio.sleep(1)
             i += 1
 
 client.run('MzAxMjczMjQ5Nzc2NjY0NTc3.C84tlw.Yq3HK7ZlLmIcocUgw5ByGtEdJM4')
