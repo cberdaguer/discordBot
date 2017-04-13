@@ -1,7 +1,9 @@
 import discord
 import asyncio
 from random import randint
+from boto.s3.connection import S3Connection
 
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 string_a_insulte = ["connard", "enculé", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
 string_reponse_pascal = [" Faut pas parler comme ça wallah", " Comment tu parles toi ? Je vais te niquer ta mère !", " Toi tu vas venir faire un saut en parachute tu feras moins le malin",
                         " Tu vas te manger un RTT si tu continues !" ," Les cassos dans ton genre je les bouffes au petit dej" , " Si tu parles mal encore je te fourre.",
@@ -63,4 +65,4 @@ async def on_message(message):
     elif message.content.startswith('!appelATemoin'):
         await client.send_message(message.channel, 'Vous êtes un Cassos ? Vous avez abandonnez votre gamin dans un foyer car vous étiez trop bourré pour vous en occuper ? Il vous manque la moitié des dents et vous portez des chemises dragons ? N\'attendez plus et appelez nous. Nous sommes la pour vous ridiculisez devant la France entière et ce moquer de votre consanguinité élévé ! Contactez nous à : niquetamerelecassosetfaisnousdelaudience@nrj12.fdp.com')
 
-client.run('MzAxMjczMjQ5Nzc2NjY0NTc3.C9Dfjg.KnFZynWek-UP6JzztQe75JIUjPA')
+client.run(s3)
