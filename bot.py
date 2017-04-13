@@ -1,15 +1,26 @@
 import discord
 import asyncio
+from random import randint
 
 string_a_insulte = ["connard", "enculé", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
+string_reponse_pascal = [" Faut pas parler comme ça wallah", " Comment tu parles toi ? Je vais te niquer ta mère !", " Toi tu vas venir faire un saut en parachute tu feras moins le malin",
+                        " Tu vas te manger un RTT si tu continues !" ," Les cassos dans ton genre je les bouffes au petit dej" , " Si tu parles mal encore je te fourre."]
 
 
 client = discord.Client()
+
 
 def findInsult(message):
     for insult in string_a_insulte:
         if insult in message:
             return True
+
+def generenombreAleatoire(nombre):
+    return randint(0, nombre)
+
+
+nombrePhrase = len(string_reponse_pascal)
+
 
 @client.event
 async def on_ready():
@@ -17,6 +28,8 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
+
+
 
 @client.event
 async def on_message(message):
@@ -39,7 +52,8 @@ async def on_message(message):
     elif Insult:
         message_sender = message.author
         message_mention = message_sender.mention
-        message_to_send = message_mention + "Faut pas parler comme ça wallah"
+        nombreAleatoire = generenombreAleatoire(nombrePhrase)
+        message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
         #await client.send_message(message.channel, 'Comment tu parles toi ? Je vais te niquer ta mère !')
         await client.send_message(message.channel, message_to_send)
 
