@@ -1,7 +1,7 @@
 import discord
 import asyncio
 
-string_a_insulte = ["connard", "enculé", "pd", "batard", "salaud", "pute", "salope"]
+string_a_insulte = ["connard", "enculé", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
 
 
 client = discord.Client()
@@ -37,7 +37,12 @@ async def on_message(message):
             i += 1
 
     elif Insult:
-        await client.send_message(message.channel, 'Comment tu parles toi ? Je vais te niquer ta mère !')
+        message_sender = message.author
+        message_mention = message_sender.mention
+        message_to_send = message_mention + "Faut pas parler comme ça wallah"
+        #await client.send_message(message.channel, 'Comment tu parles toi ? Je vais te niquer ta mère !')
+        await client.send_message(message.channel, message_to_send)
+
 
     elif message.content.startswith('!appelATemoin'):
         await client.send_message(message.channel, 'Vous êtes un Cassos ? Vous avez abandonnez votre gamin dans un foyer car vous étiez trop bourré pour vous en occuper ? Il vous manque la moitié des dents et vous portez des chemises dragons ? N\'attendez plus et appelez nous. Nous sommes la pour vous ridiculisez devant la France entière et ce moquer de votre consanguinité élévé ! Contactez nous à : niquetamerelecassosetfaisnousdelaudience@nrj12.fdp.com')
