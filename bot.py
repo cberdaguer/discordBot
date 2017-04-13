@@ -2,6 +2,7 @@ import discord
 import asyncio
 from random import randint
 from boto.s3.connection import S3Connection
+import os
 
 s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 string_a_insulte = ["connard", "enculé", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
