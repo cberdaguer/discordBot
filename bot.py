@@ -2,6 +2,7 @@ import discord
 import asyncio
 from random import randint
 import os
+import git
 
 token = os.environ['token']
 string_a_insulte = ["connard", "enculé", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
@@ -15,6 +16,13 @@ string_reponse_pascal = [" Faut pas parler comme ça wallah", " Comment tu parle
 client = discord.Client()
 
 
+
+def get_git_root(path):
+
+        git_repo = git.Repo(path, search_parent_directories=True)
+        git_root = git_repo.git.rev_parse("--show-toplevel")
+        return git_root
+
 def findInsult(message):
     for insult in string_a_insulte:
         if insult in message:
@@ -24,6 +32,7 @@ def generenombreAleatoire(nombre):
     return randint(0, nombre)
 
 
+pathGif = get_git_root("/MEDIA/finger.gif")
 nombrePhrase = len(string_reponse_pascal)
 
 
@@ -65,4 +74,6 @@ async def on_message(message):
     elif message.content.startswith('!appelATemoin'):
         await client.send_message(message.channel, 'Vous êtes un Cassos ? Vous avez abandonnez votre gamin dans un foyer car vous étiez trop bourré pour vous en occuper ? Il vous manque la moitié des dents et vous portez des chemises dragons ? N\'attendez plus et appelez nous. Nous sommes la pour vous ridiculisez devant la France entière et ce moquer de votre consanguinité élévé ! Contactez nous à : niquetamerelecassosetfaisnousdelaudience@nrj12.fdp.com')
 
+    elif message.content.startswith('!finger'):
+        await client.send_file(pathGif)
 client.run(token)
