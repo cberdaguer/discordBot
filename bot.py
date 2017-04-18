@@ -32,7 +32,7 @@ def generenombreAleatoire(nombre):
     return randint(0, nombre)
 
 
-pathGif = get_git_root("/MEDIA/finger.gif")
+pathGif = get_git_root("MEDIA/finger.gif")
 nombrePhrase = len(string_reponse_pascal)
 
 
