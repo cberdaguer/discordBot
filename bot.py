@@ -11,7 +11,7 @@ string_reponse_pascal = [" Faut pas parler comme ça wallah", " Comment tu parle
                         " Tu insultes les gens mais tu as vu ta tronche de cul ?", " Niveau cassos qui parle mal tu es dans le top 3 de NRJ12 c'est dire.",
                         " Tu veux que je te marrave la tronche ?", " Mais que tu es laid !", " Attend attend je vais demander les sous-titres à la prod je comprend rien.",
                         " ok ok, je songe vraiment à te faire le cul maintenant.", "Si tu continues je me tape ta mère... ah non elle est deuguelasse c'est vrai !",
-                        "C'est à moi que tu parles sombre fils de pute ?", "Dan est une pute...merde je suis censé t'insulter là, petite gourgandine va !"]
+                        "C'est à moi que tu parles sombre fils de p***?", "Dan est une catin...bordel ! je suis censé t'insulter là, petite gourgandine va !"]
 
 
 client = discord.Client()
