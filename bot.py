@@ -5,7 +5,7 @@ import os
 
 
 token = os.environ['token']
-string_a_insulte = ["connard", "enculé", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
+string_a_insulte = ["connard", "enculé", "encule", "pûte", "gourgandine" "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
 string_reponse_pascal = [" Faut pas parler comme ça wallah", " Comment tu parles toi ? Je vais te niquer ta mère !", " Toi tu vas venir faire un saut en parachute tu feras moins le malin",
                         " Tu vas te manger un RTT si tu continues !" ," Les cassos dans ton genre je les bouffes au petit dej" , " Si tu parles mal encore je te fourre.",
                         " Tu insultes les gens mais tu as vu ta tronche de cul ?", " Niveau cassos qui parle mal tu es dans le top 3 de NRJ12 c'est dire.",
