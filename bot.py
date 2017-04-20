@@ -63,12 +63,13 @@ async def on_message(message):
     elif message.content.startswith('!nord'):
         await client.send_message(message.channel, 'Les gens du nord sont mon gagne pain, continuez de pondre mes amis cassos, continuez !')
 
-    elif message.content.startswith('!mercipascal'):
+    elif message.content.startswith('!merciPascal'):
         i = 0
         while i < 5:
             await client.send_message(message.channel, '!rand')
             await asyncio.sleep(2)
             i += 1
+
 
     elif message.content.startswith('!pascalOnVeutToutVoir'):
         i = 0
@@ -86,5 +87,8 @@ async def on_message(message):
             await client.send_message(message.channel, '!randmoule')
             await asyncio.sleep(2)
             i += 1
+
+    elif message.content.startswith('!help'):
+        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.')
 
 client.run(token)
