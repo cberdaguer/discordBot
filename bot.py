@@ -5,7 +5,7 @@ import os
 
 
 token = os.environ['token']
-string_a_insulte = ["connard", "enculé", "encule", "pûte", "gourgandine" "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
+string_a_insulte = ["connard", "enculé", "encule", "pûte", "gourgandine", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
 string_reponse_pascal = [" Faut pas parler comme ça wallah", " Comment tu parles toi ? Je vais te niquer ta mère !", " Toi tu vas venir faire un saut en parachute tu feras moins le malin",
                         " Tu vas te manger un RTT si tu continues !" ," Les cassos dans ton genre je les bouffes au petit dej" , " Si tu parles mal encore je te fourre.",
                         " Tu insultes les gens mais tu as vu ta tronche de cul ?", " Niveau cassos qui parle mal tu es dans le top 3 de NRJ12 c'est dire.",
@@ -53,8 +53,14 @@ async def on_message(message):
     string_a_tester = stringMessage.lower()
     Insult = findInsult(string_a_tester)
 
+    if Insult:
+        message_sender = message.author
+        message_mention = message_sender.mention
+        nombreAleatoire = generenombreAleatoire(nombrePhrase)
+        message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
+        await client.send_message(message.channel, message_to_send)
 
-    if message.content.startswith('!nord'):
+    elif message.content.startswith('!nord'):
         await client.send_message(message.channel, 'Les gens du nord sont mon gagne pain, continuez de pondre mes amis cassos, continuez !')
 
     elif message.content.startswith('!mercipascal'):
@@ -64,13 +70,12 @@ async def on_message(message):
             await asyncio.sleep(2)
             i += 1
 
-    elif Insult:
-        message_sender = message.author
-        message_mention = message_sender.mention
-        nombreAleatoire = generenombreAleatoire(nombrePhrase)
-        message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
-        await client.send_message(message.channel, message_to_send)
-
+    elif messae.content.startswith('!pascalOnVeutToutVoir'):
+        i = 0
+        while i < 5:
+            await client.send_message(message.channel, '!rand all')
+            await asyncio.sleep(3)
+            i += 1
 
     elif message.content.startswith('!appelATemoin'):
         await client.send_message(message.channel, 'Vous êtes un Cassos ? Vous avez abandonnez votre gamin dans un foyer car vous étiez trop bourré pour vous en occuper ? Il vous manque la moitié des dents et vous portez des chemises dragons ? N\'attendez plus et appelez nous. Nous sommes la pour vous ridiculisez devant la France entière et ce moquer de votre consanguinité élévé ! Contactez nous à : niquetamerelecassosetfaisnousdelaudience@nrj12.fdp.com')
