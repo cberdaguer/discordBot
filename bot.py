@@ -83,6 +83,7 @@ async def on_message(message):
         while i < 50:
             await client.send_message(message.channel, '!rand hard')
             await asyncio.sleep(1)
+            i += 1
 
     elif message.content.startswith('!appelATemoin'):
         await client.send_message(message.channel, 'Vous êtes un Cassos ? Vous avez abandonnez votre gamin dans un foyer car vous étiez trop bourré pour vous en occuper ? Il vous manque la moitié des dents et vous portez des chemises dragons ? N\'attendez plus et appelez nous. Nous sommes la pour vous ridiculisez devant la France entière et ce moquer de votre consanguinité élévé ! Contactez nous à : niquetamerelecassosetfaisnousdelaudience@nrj12.fdp.com')
