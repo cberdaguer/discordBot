@@ -89,6 +89,6 @@ async def on_message(message):
             i += 1
 
     elif message.content.startswith('!help'):
-        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.')
+        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon. \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
 
 client.run(token)
