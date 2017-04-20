@@ -70,9 +70,9 @@ async def on_message(message):
             await asyncio.sleep(2)
             i += 1
 
-    elif messae.content.startswith('!pascalOnVeutToutVoir'):
+    elif message.content.startswith('!pascalOnVeutToutVoir'):
         i = 0
-        while i < 5:
+        while i < 10:
             await client.send_message(message.channel, '!rand all')
             await asyncio.sleep(3)
             i += 1
