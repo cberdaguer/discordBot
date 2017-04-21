@@ -78,7 +78,7 @@ async def on_message(message):
             await asyncio.sleep(3)
             i += 1
 
-    elif message.content.startswith('!pascalFaisPeterDuHardSaMereLaPute'):
+    elif message.content.startswith('!pascalFaisPeterDuHardSaMereLaTepu'):
         i = 0
         while i < 50:
             await client.send_message(message.channel, '!rand hard')
@@ -96,6 +96,6 @@ async def on_message(message):
             i += 1
 
     elif message.content.startswith('!help'):
-        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.\n!pascalFaisPeterDuHardSaMereLaPute: DISCLAIMER --> Be careful avec ça... \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
+        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.\n!pascalFaisPeterDuHardSaMereLaTepu: DISCLAIMER --> Be careful avec ça... \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
 
 client.run(token)
