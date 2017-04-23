@@ -19,7 +19,11 @@ string_reponse_pascal = [" Faut pas parler comme ça wallah", " Comment tu parle
 
 urlGif = "https://raw.github.com/cberdaguer/discordBot/tree/master/MEDIA/finger.gif"
 requeteGif = requests.get(urlGif)
-print(getcwd())
+currentPath = getcwd()
+gifFile = currentPath + '/finger.gif'
+file = open(gifFile, 'w')
+file.write(requeteGif.content)
+pathFile = currentPath + "/finger.gif"
 
 client = discord.Client()
 
@@ -80,7 +84,7 @@ async def on_message(message):
             i += 1
 
     elif message.content.startswith('!finger'):
-        await client.send_message(message.channel, requeteGif)
+        await client.send_file(message.channel, pathFile)
 
     elif message.content.startswith('!pascalOnVeutToutVoir'):
         i = 0
