@@ -4,6 +4,7 @@ import threading
 from random import randint
 import os
 import git
+import requests
 
 
 token = os.environ['token']
@@ -15,7 +16,8 @@ string_reponse_pascal = [" Faut pas parler comme ça wallah", " Comment tu parle
                         " ok ok, je songe vraiment à te faire le cul maintenant.", "Si tu continues je me tape ta mère... ah non elle est deuguelasse c'est vrai !",
                         "C'est à moi que tu parles sombre fils de p***?", "Dan est une catin...bordel ! je suis censé t'insulter là, petite gourgandine va !"]
 
-urlGif = "https://github.com/cberdaguer/discordBot/tree/master/MEDIA/finger.gif"
+urlGif = "https://raw.github.com/cberdaguer/discordBot/tree/master/MEDIA/finger.gif"
+
 
 client = discord.Client()
 
