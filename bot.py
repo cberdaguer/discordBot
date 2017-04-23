@@ -75,7 +75,7 @@ async def on_message(message):
             i += 1
 
     elif message.content.startswith('!finger'):
-        await client.send_file(channel, '/Users/charles/Cours/2A/SoC/GIT/DiscordBot/discordBot/MEDIA/finger.gif')
+        await client.send_file(channel, get_git_root('/Users/charles/Cours/2A/SoC/GIT/DiscordBot/discordBot/MEDIA/finger.gif'))
 
     elif message.content.startswith('!pascalOnVeutToutVoir'):
         i = 0
