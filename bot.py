@@ -37,20 +37,6 @@ def generenombreAleatoire(nombre):
 
 nombrePhrase = len(string_reponse_pascal)
 
-@client.event
-def thread_Insulte():
-    async def on_message(message):
-
-        stringMessage = message.content
-        string_a_tester = stringMessage.lower()
-        Insult = findInsult(string_a_tester)
-
-        if Insult:
-            message_sender = message.author
-            message_mention = message_sender.mention
-            nombreAleatoire = generenombreAleatoire(nombrePhrase)
-            message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
-            await client.send_message(message.channel, message_to_send)
 
 
 
@@ -70,14 +56,14 @@ async def on_message(message):
     string_a_tester = stringMessage.lower()
     Insult = findInsult(string_a_tester)
 
-    # if Insult:
-    #     message_sender = message.author
-    #     message_mention = message_sender.mention
-    #     nombreAleatoire = generenombreAleatoire(nombrePhrase)
-    #     message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
-    #     await client.send_message(message.channel, message_to_send)
+    if Insult:
+        message_sender = message.author
+        message_mention = message_sender.mention
+        nombreAleatoire = generenombreAleatoire(nombrePhrase)
+        message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
+        await client.send_message(message.channel, message_to_send)
 
-    if message.content.startswith('!nord'):
+    elif message.content.startswith('!nord'):
         await client.send_message(message.channel, 'Les gens du nord sont mon gagne pain, continuez de pondre mes amis cassos, continuez !')
 
     elif message.content.startswith('!merciPascal'):
