@@ -6,6 +6,7 @@ from os import getcwd
 import os
 import git
 import requests
+import io
 
 
 token = os.environ['token']
@@ -21,7 +22,7 @@ urlGif = "https://raw.github.com/cberdaguer/discordBot/master/MEDIA/finger.gif"
 # requeteGif = requests.get(urlGif)
 # currentPath = getcwd()
 # gifFile = currentPath + '/finger.gif'
-# 
+#
 # print(gifFile)
 #
 # open(gifFile, "w").write(requeteGif.text)
