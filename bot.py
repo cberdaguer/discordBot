@@ -22,7 +22,7 @@ requeteGif = requests.get(urlGif)
 currentPath = getcwd()
 gifFile = currentPath + '/finger.gif'
 file = open(gifFile, 'w')
-file.write(requeteGif.content)
+file.write(requeteGif)
 pathFile = currentPath + "/finger.gif"
 
 client = discord.Client()
