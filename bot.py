@@ -87,7 +87,7 @@ async def on_message(message):
             i += 1
 
     elif message.content.startswith('!finger'):
-        await client.send_file(message.channel, gifFile, filename = "finger.gif")
+        await client.send_file(message.channel, gifFile)
 
     elif message.content.startswith('!pascalOnVeutToutVoir'):
         i = 0
