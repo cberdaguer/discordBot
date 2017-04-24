@@ -6,7 +6,7 @@ from os import getcwd
 import os
 import git
 import requests
-import io
+
 
 
 token = os.environ['token']
@@ -89,9 +89,9 @@ async def on_message(message):
 
     elif message.content.startswith('!finger'):
 
-        response = requests.get(urlGif, stream=True)
-        await client.send_file(message.channel, io.BytesIO(response.raw.read()), filename='img.gif', content='content')
-        #await client.send_file(message.channel, gifFile)
+        #response = requests.get(urlGif, stream=True)
+        #await client.send_file(message.channel, io.BytesIO(response.raw.read()), filename='img.gif', content='content')
+        await client.send_file(message.channel, urlGif)
 
     elif message.content.startswith('!pascalOnVeutToutVoir'):
         i = 0
