@@ -91,7 +91,7 @@ async def on_message(message):
 
         #response = requests.get(urlGif, stream=True)
         #await client.send_file(message.channel, io.BytesIO(response.raw.read()), filename='img.gif', content='content')
-        await client.send_file(message.channel, urlGif)
+        await client.send_message(message.channel, urlGif)
 
     elif message.content.startswith('!pascalOnVeutToutVoir'):
         i = 0
