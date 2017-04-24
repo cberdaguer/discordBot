@@ -88,10 +88,8 @@ async def on_message(message):
             i += 1
 
     elif message.content.startswith('!finger'):
-
-        #response = requests.get(urlGif, stream=True)
-        #await client.send_file(message.channel, io.BytesIO(response.raw.read()), filename='img.gif', content='content')
         await client.send_message(message.channel, urlGif)
+
 
     elif message.content.startswith('!pascalOnVeutToutVoir'):
         i = 0
@@ -106,6 +104,7 @@ async def on_message(message):
             await client.send_message(message.channel, '!rand hard')
             await asyncio.sleep(1)
             i += 1
+        await client.send_message(message.channel, 'ayé yé fini !!')
 
     elif message.content.startswith('!appelATemoin'):
         await client.send_message(message.channel, 'Vous êtes un Cassos ? Vous avez abandonnez votre gamin dans un foyer car vous étiez trop bourré pour vous en occuper ? Il vous manque la moitié des dents et vous portez des chemises dragons ? N\'attendez plus et appelez nous. Nous sommes la pour vous ridiculisez devant la France entière et ce moquer de votre consanguinité élévé ! Contactez nous à : niquetamerelecassosetfaisnousdelaudience@nrj12.fdp.com')
@@ -118,6 +117,6 @@ async def on_message(message):
             i += 1
 
     elif message.content.startswith('!help'):
-        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.\n!pascalFaisPeterDuHardSaMereLaTepu: DISCLAIMER --> Be careful avec ça... \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
+        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.\n!pascalFaisPeterDuHardSaMereLaTepu: DISCLAIMER --> Be careful avec ça...\n!finger: Mon createur te merdera. \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
 
 client.run(token)
