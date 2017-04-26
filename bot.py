@@ -70,7 +70,7 @@ async def on_message(message):
     string_a_tester = stringMessage.lower()
 
     if (message.author != 'PascalBot'):
-    Insult = findInsult(string_a_tester)
+        Insult = findInsult(string_a_tester)
 
     if Insult:
         message_sender = message.author
