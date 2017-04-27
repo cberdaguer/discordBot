@@ -92,7 +92,7 @@ async def on_message(message):
     elif message.content.startswith('!merciPascal'):
         i = 0
         while i < 5:
-            await client.send_message(message.channel, '!rand')
+            await client.send_message(message.channel, '!ra')
             await asyncio.sleep(2)
             i += 1
 
@@ -100,17 +100,17 @@ async def on_message(message):
         await client.send_message(message.channel, urlGif)
 
 
-    elif message.content.startswith('!pascalOnVeutToutVoir'):
+    elif message.content.startswith('!pascalOnVeutDuBouleSaMere'):
         i = 0
         while i < 10:
-            await client.send_message(message.channel, '!rand all')
+            await client.send_message(message.channel, '!boule')
             await asyncio.sleep(3)
             i += 1
 
     elif message.content.startswith('!pascalFaisPeterDuHardSaMereLaTepu'):
         i = 0
         while i < 50:
-            await client.send_message(message.channel, '!rand hard')
+            await client.send_message(message.channel, '!rh')
             await asyncio.sleep(1)
             i += 1
         await client.send_message(message.channel, 'ayé yé fini !!')
