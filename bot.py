@@ -76,7 +76,7 @@ async def on_message(message):
             await client.send_message(message.channel, '!gh')
             await asyncio.sleep(2)
             i += 1
-        await client.send_message(message.channel, 'ayé yé fini !!'
+        await client.send_message(message.channel, 'ayé yé fini !!')
 
     elif message.content.startswith('!pascalFaisPeterDuGif'):
         i = 0
@@ -84,7 +84,7 @@ async def on_message(message):
             await client.send_message(message.channel, '!gs')
             await asyncio.sleep(2)
             i += 1
-        await client.send_message(message.channel, 'ayé yé fini !!'
+        await client.send_message(message.channel, 'ayé yé fini !!')
 
     elif message.content.startswith('pascal ?'):
         await client.send_message(message.channel, 'Oui ?')
