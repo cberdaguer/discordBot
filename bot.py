@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import discord
 import asyncio
 import threading
@@ -19,19 +21,8 @@ string_reponse_pascal = [" Faut pas parler comme ça wallah", " Comment tu parle
                         "C'est à moi que tu parles sombre fils de p***?", "Dan est une catin...bordel ! je suis censé t'insulter là, petite gourgandine va !"]
 
 urlGif = "https://raw.github.com/cberdaguer/discordBot/master/MEDIA/finger.gif"
-# requeteGif = requests.get(urlGif)
-# currentPath = getcwd()
-# gifFile = currentPath + '/finger.gif'
-#
-# print(gifFile)
-#
-# open(gifFile, "w").write(requeteGif.text)
-
-
 
 client = discord.Client()
-
-
 
 def get_git_root(path):
 
@@ -79,10 +70,12 @@ async def on_message(message):
         message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
         await client.send_message(message.channel, message_to_send)
 
-    elif message.content.startswith('Pascal ?'):
-        await client.send_message(message.channel, 'Oui ?')
-        await asyncio.sleep(6)
-        await client.send_message(message.channel, 'Je vais t\'enculer.')
+    elif message.content.startswith('!pascalOnVeutDuGifHardSaMere'):
+        i = 0
+        while i < 25:
+            await client.send_message(message.channel, '!gh')
+            await asyncio.sleep(2)
+            i += 1
 
     elif message.content.startswith('pascal ?'):
         await client.send_message(message.channel, 'Oui ?')
@@ -126,6 +119,6 @@ async def on_message(message):
             i += 1
 
     elif message.content.startswith('!help'):
-        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.\n!pascalFaisPeterDuHardSaMereLaTepu: DISCLAIMER --> Be careful avec ça...\n!finger: Mon createur te merdera. \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
+        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.\n!pascalFaisPeterDuHardSaMereLaTepu: DISCLAIMER --> Be careful avec ça...\n!finger: Essaie tu verras. \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
 
 client.run(token)
