@@ -70,12 +70,21 @@ async def on_message(message):
         message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
         await client.send_message(message.channel, message_to_send)
 
-    elif message.content.startswith('!pascalOnVeutDuGifHardSaMere'):
+    elif message.content.startswith('!pascalDuGifSalePourVincent'):
         i = 0
-        while i < 25:
+        while i < 10:
             await client.send_message(message.channel, '!gh')
             await asyncio.sleep(2)
             i += 1
+        await client.send_message(message.channel, 'ayé yé fini !!'
+
+    elif message.content.startswith('!pascalFaisPeterDuGif'):
+        i = 0
+        while i < 25:
+            await client.send_message(message.channel, '!gs')
+            await asyncio.sleep(2)
+            i += 1
+        await client.send_message(message.channel, 'ayé yé fini !!'
 
     elif message.content.startswith('pascal ?'):
         await client.send_message(message.channel, 'Oui ?')
