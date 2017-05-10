@@ -53,7 +53,13 @@ def envoiImageTumblr():
     tailleTab = len(tab)
 
     chiffreRand = generenombreAleatoire(tailleTab)
-    return tab[chiffreRand]
+
+    string = tab[chiffreRand]
+    stringBis = string[0: len(string) - 7]
+    stringBis += "500.jpg"
+
+
+    return stringBis
 
 
 @client.event
