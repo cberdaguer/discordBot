@@ -4,4 +4,4 @@ websockets
 chardet
 gitpython
 requests
-BeautifulSoup
+beautifulsoup4
