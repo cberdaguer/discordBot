@@ -60,6 +60,19 @@ def envoiImageTumblr():
 
     return stringBis
 
+def envoiGifTumblr():
+
+    soup = BeautifulSoup(rTumblr.content, "html.parser")
+    tab = []
+    for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
+        tab.append(p.get("data-imageurl"))    
+
+    tailleTab = len(tab)
+
+    chiffreRand = generenombreAleatoire(tailleTab)
+    return tab[chiffreRand]
+
+
 
 @client.event
 async def on_ready():
@@ -87,7 +100,7 @@ async def on_message(message):
         await client.send_message(message.channel, message_to_send)
 
     elif message.content.startswith('!pascalGif'):
-        imageTumblr = envoiImageTumblr()
+        imageTumblr = envoiGifTumblr()
         await client.send_message(message.channel, imageTumblr)
 
     elif message.content.startswith('!pascalDuGifSalePourVincent'):
