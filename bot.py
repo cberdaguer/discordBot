@@ -64,9 +64,18 @@ def envoiGifTumblr():
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
         tabGif.append(p.get("data-imageurl"))    
 
-    tailleTab = len(tabGif)
+    isOk = 1
+    tailleTab = len(tabGif)    
     chiffreRand = generenombreAleatoire(tailleTab)
-    return tabGif[chiffreRand]
+    while(isOk != 0):
+        if(chiffreRand < tailleTab):
+            isOk = 0
+            return tabGif[chiffreRand]
+        else:
+            chiffreRand = generenombreAleatoire(tailleTab)
+    
+
+    
 
 
 
