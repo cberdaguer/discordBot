@@ -8,8 +8,9 @@ from os import getcwd
 import os
 import git
 import requests
+from bs4 import BeautifulSoup
 
-
+rTumblr = requests.get("http://lots-of-dogs.tumblr.com/archive")
 
 token = os.environ['token']
 string_a_insulte = ["connard", "enculé", "encule", "pûte", "gourgandine", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
@@ -42,7 +43,17 @@ def generenombreAleatoire(nombre):
 
 nombrePhrase = len(string_reponse_pascal)
 
+def envoiImageTumblr():
 
+    soup = BeautifulSoup(rTumblr.content, "html.parser")
+    tab = []
+    for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
+        tab.append(p.get("data-imageurl"))    
+
+    tailleTab = len(tab)
+
+    chiffreRand = generenombreAleatoire(tailleTab)
+    return tab[chiffreRand]
 
 
 @client.event
@@ -69,6 +80,10 @@ async def on_message(message):
         nombreAleatoire = generenombreAleatoire(nombrePhrase)
         message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
         await client.send_message(message.channel, message_to_send)
+
+    elif message.content.startswith('!pascalTest'):
+        imageTumblr = envoiImageTumblr()
+        await client.send_message(message.channel, imageTumblr)
 
     elif message.content.startswith('!pascalDuGifSalePourVincent'):
         i = 0
