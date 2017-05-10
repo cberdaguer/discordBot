@@ -58,13 +58,13 @@ def envoiImageTumblr():
 
 def envoiGifTumblr():
     soup = BeautifulSoup(rTumblrGif.content, "html.parser")
-    tab = []
+    tabGif = []
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
-        tab.append(p.get("data-imageurl"))    
+        tabGif.append(p.get("data-imageurl"))    
 
-    tailleTab = len(tab)
+    tailleTab = len(tabGif)
     chiffreRand = generenombreAleatoire(tailleTab)
-    return tab[chiffreRand]
+    return tabGif[chiffreRand]
 
 
 
