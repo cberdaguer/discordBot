@@ -50,11 +50,11 @@ def envoiImageTumblr():
 
     chiffreRand = generenombreAleatoire(tailleTab)
 
-    string = tab[chiffreRand]
-    stringBis = string[0: len(string) - 7]
-    stringBis += "500.jpg"
-
-    return stringBis
+  #  string = tab[chiffreRand]
+  #  stringBis = string[0: len(string) - 7]
+  #  stringBis += "500.jpg"
+    return tab[chiffreRand]
+   # return stringBis
 
 def envoiGifTumblr():
     soup = BeautifulSoup(rTumblrGif.content, "html.parser")
