@@ -6,11 +6,11 @@ import threading
 from random import randint
 from os import getcwd
 import os
-
 import requests
 from bs4 import BeautifulSoup
 
-rTumblr = requests.get("http://wtf-fun-gifs.tumblr.com/archive")
+rTumblrGif = requests.get("http://wtf-fun-gifs.tumblr.com/archive")
+rTumblrImage = requests.get("http://addictedtophoto.tumblr.com/archive")
 
 token = os.environ['token']
 string_a_insulte = ["connard", "enculé", "encule", "pûte", "gourgandine", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
@@ -26,7 +26,6 @@ urlGif = "https://raw.github.com/cberdaguer/discordBot/master/MEDIA/finger.gif"
 client = discord.Client()
 
 def get_git_root(path):
-
         git_repo = git.Repo(path, search_parent_directories=True)
         git_root = git_repo.git.rev_parse("--show-toplevel")
         return git_root
@@ -39,13 +38,10 @@ def findInsult(message):
 def generenombreAleatoire(nombre):
     return randint(0, nombre)
 
-
-
 nombrePhrase = len(string_reponse_pascal)
 
 def envoiImageTumblr():
-
-    soup = BeautifulSoup(rTumblr.content, "html.parser")
+    soup = BeautifulSoup(rTumblrGif.content, "html.parser")
     tab = []
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
         tab.append(p.get("data-imageurl"))    
@@ -61,14 +57,12 @@ def envoiImageTumblr():
     return stringBis
 
 def envoiGifTumblr():
-
-    soup = BeautifulSoup(rTumblr.content, "html.parser")
+    soup = BeautifulSoup(rTumblrGif.content, "html.parser")
     tab = []
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
         tab.append(p.get("data-imageurl"))    
 
     tailleTab = len(tab)
-
     chiffreRand = generenombreAleatoire(tailleTab)
     return tab[chiffreRand]
 
@@ -85,7 +79,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-
     stringMessage = message.content
     string_a_tester = stringMessage.lower()
 
@@ -100,8 +93,14 @@ async def on_message(message):
         await client.send_message(message.channel, message_to_send)
 
     elif message.content.startswith('!pascalGif'):
-        imageTumblr = envoiGifTumblr()
-        await client.send_message(message.channel, imageTumblr)
+        gifTumblr = envoiGifTumblr()
+        await client.send_message(message.channel, gifTumblr)
+
+    elif message.content.startswith('!pascalFaisNousVoyager'):
+        for i in range(0, 10):
+            imageTumblr = envoiImageTumblr()
+            await client.send_message(message.channel, imageTumblr)
+            await asyncio.sleep(1)
 
     elif message.content.startswith('!pascalDuGifSalePourVincent'):
         i = 0
@@ -161,6 +160,6 @@ async def on_message(message):
             i += 1
 
     elif message.content.startswith('!help'):
-        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.\n!pascalFaisPeterDuHardSaMereLaTepu: DISCLAIMER --> Be careful avec ça...\n!finger: Essaie tu verras.\n!pascalDuGifSalePourVincent: Pour mon pote vincent le sale.\n!pascalFaisPeterDuGif: 25 gif de boobs tout mignion tout gros \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
+        await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.\n!pascalFaisPeterDuHardSaMereLaTepu: DISCLAIMER --> Be careful avec ça...\n!finger: Essaie tu verras.\n!pascalDuGifSalePourVincent: Pour mon pote vincent le sale.\n!pascalFaisPeterDuGif: 25 gif de boobs tout mignion tout gros.\n!pascalGif: Envoi un gif marrant (askip).\n!pascalFaisNousVoyager: Envoi 10 belles images (inchallah) \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
 
 client.run(token)
