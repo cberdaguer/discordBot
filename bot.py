@@ -47,8 +47,10 @@ def envoiImageTumblr():
         tab.append(p.get("data-imageurl"))    
 
     tailleTab = len(tab)
+    print("TAILLE TABLEAU", tailleTab)
 
     chiffreRand = generenombreAleatoire(tailleTab)
+    print("Chiffre RAND:", chiffreRand)
 
     string = tab[chiffreRand]
     stringBis = string[0: len(string) - 7]
