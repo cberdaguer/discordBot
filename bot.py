@@ -41,7 +41,7 @@ def generenombreAleatoire(nombre):
 nombrePhrase = len(string_reponse_pascal)
 
 def envoiImageTumblr():
-    soup = BeautifulSoup(rTumblrGif.content, "html.parser")
+    soup = BeautifulSoup(rTumblrImage.content, "html.parser")
     tab = []
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
         tab.append(p.get("data-imageurl"))    
@@ -50,11 +50,11 @@ def envoiImageTumblr():
 
     chiffreRand = generenombreAleatoire(tailleTab)
 
-  #  string = tab[chiffreRand]
-  #  stringBis = string[0: len(string) - 7]
-  #  stringBis += "500.jpg"
-    return tab[chiffreRand]
-   # return stringBis
+    string = tab[chiffreRand]
+    stringBis = string[0: len(string) - 7]
+    stringBis += "500.jpg"
+   
+    return stringBis
 
 def envoiGifTumblr():
     soup = BeautifulSoup(rTumblrGif.content, "html.parser")
