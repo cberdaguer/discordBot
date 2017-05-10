@@ -6,11 +6,11 @@ import threading
 from random import randint
 from os import getcwd
 import os
-import git
+
 import requests
 from bs4 import BeautifulSoup
 
-rTumblr = requests.get("http://lots-of-dogs.tumblr.com/archive")
+rTumblr = requests.get("http://wtf-fun-gifs.tumblr.com/archive")
 
 token = os.environ['token']
 string_a_insulte = ["connard", "enculé", "encule", "pûte", "gourgandine", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
@@ -58,7 +58,6 @@ def envoiImageTumblr():
     stringBis = string[0: len(string) - 7]
     stringBis += "500.jpg"
 
-
     return stringBis
 
 
@@ -87,7 +86,7 @@ async def on_message(message):
         message_to_send = message_mention + string_reponse_pascal[nombreAleatoire]
         await client.send_message(message.channel, message_to_send)
 
-    elif message.content.startswith('!pascalTest'):
+    elif message.content.startswith('!pascalGif'):
         imageTumblr = envoiImageTumblr()
         await client.send_message(message.channel, imageTumblr)
 
