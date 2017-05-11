@@ -75,10 +75,12 @@ def envoiImageTumblr(PaddressTumblr):
     soup = BeautifulSoup(retour.content, "html.parser")
     tab = []
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
+        print(p.get("data-imageurl"))
         tab.append(p.get("data-imageurl"))    
 
+    print(tailleTab)
     tailleTab = len(tab) - 1    
-
+    print(tailleTab)
     chiffreRand = generenombreAleatoire(tailleTab)
     
     string = tab[chiffreRand]
