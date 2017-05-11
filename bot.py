@@ -71,27 +71,20 @@ def envoiImageTumblr(PadressTumblr):
     tab = []    
     isOk = 1
     while(isOk == 1):
-
         isOk = testRequete(PadressTumblr)    
     
-    print("IS OK : ", isOk)
     tab = isOk
-    tailleTab = len(tab) - 1    
-        
-    chiffreRand = generenombreAleatoire(tailleTab)
-    
-    string = tab[chiffreRand]
-        
-    stringModifie = string.replace("250.","500.")
-    print(stringModifie)
+    tailleTab = len(tab) - 1            
+    chiffreRand = generenombreAleatoire(tailleTab)    
+    string = tab[chiffreRand]        
+    stringModifie = string.replace("250.","500.")    
     return stringModifie
 
 def testRequete(PadressTumblr):
     retour = creerCheminEnvoi(PadressTumblr)
     tab = []
     soup = BeautifulSoup(retour.content, "html.parser")
-    for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
-        print(p.get("data-imageurl"))            
+    for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):                   
         tab.append(p.get("data-imageurl"))
     if(len(tab)== 0):
         return 1
@@ -127,10 +120,8 @@ async def on_message(message):
         gifTumblr = envoiImageTumblr(tumblrGif)
         await client.send_message(message.channel, gifTumblr)
 
-    elif message.content.startswith('!pascalFail'):
-        
-        FailTumblr = envoiImageTumblr(tumblrFail)
-        print(FailTumblr)
+    elif message.content.startswith('!pascalFail'):        
+        FailTumblr = envoiImageTumblr(tumblrFail)       
         await client.send_message(message.channel, FailTumblr)
 
     elif message.content.startswith('!pascalFaisNousVoyager'):
