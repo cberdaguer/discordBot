@@ -78,7 +78,7 @@ def envoiImageTumblr(PadressTumblr):
         envoiImageTumblr(PadressTumblr)
     else:
         tailleTab = len(tab) - 1    
-        print(tailleTab)
+        
         chiffreRand = generenombreAleatoire(tailleTab)
     
         string = tab[chiffreRand]
@@ -130,6 +130,7 @@ async def on_message(message):
 
     elif message.content.startswith('!pascalFail'):
         FailTumblr = envoiImageTumblr(tumblrFail)
+        print(FailTumblr)
         await client.send_message(message.channel, FailTumblr)
 
     elif message.content.startswith('!pascalFaisNousVoyager'):
