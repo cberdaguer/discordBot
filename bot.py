@@ -67,41 +67,37 @@ def creerCheminEnvoi(PaddressTumblr):
 nombrePhrase = len(string_reponse_pascal)
 
 def envoiImageTumblr(PadressTumblr):
-    tab = []
-    retour = creerCheminEnvoi(PadressTumblr)
-    stringModifie = None
-    soup = BeautifulSoup(retour.content, "html.parser")
-    for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
-        print(p.get("data-imageurl"))
-            
-        tab.append(p.get("data-imageurl"))
-    if(len(tab)== 0):
-        envoiImageTumblr(PadressTumblr)
-    else:
-        tailleTab = len(tab) - 1    
-        
-        chiffreRand = generenombreAleatoire(tailleTab)
+
+    tab = []    
+    isOk = 1
+    while(isOk == 1):
+
+        isOk = testRequete(PadressTumblr)    
     
-        string = tab[chiffreRand]
-        #print(string.replace("250.","500."))
-        stringModifie = string.replace("250.","500.")
-        print(stringModifie)
+    print("IS OK : ", isOk)
+    tab = isOk
+    tailleTab = len(tab) - 1    
+        
+    chiffreRand = generenombreAleatoire(tailleTab)
+    
+    string = tab[chiffreRand]
+        
+    stringModifie = string.replace("250.","500.")
+    print(stringModifie)
     return stringModifie
 
-def envoiFailTumblr():
-    soup = BeautifulSoup(rTumblrFail.content, "html.parser")
-    tabFail = []
+def testRequete(PadressTumblr):
+    retour = creerCheminEnvoi(PadressTumblr)
+    tab = []
+    soup = BeautifulSoup(retour.content, "html.parser")
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
-        tabFail.append(p.get("data-imageurl"))
-    isOk = 1
-    tailleTab = len(tabFail)    
-    chiffreRand = generenombreAleatoire(tailleTab)
-    while(isOk != 0):
-        if(chiffreRand < tailleTab):
-            isOk = 0
-            return tabFail[chiffreRand]
-        else:
-            chiffreRand = generenombreAleatoire(tailleTab)
+        print(p.get("data-imageurl"))            
+        tab.append(p.get("data-imageurl"))
+    if(len(tab)== 0):
+        return 1
+    else:
+        return tab
+
 
 @client.event
 async def on_ready():
