@@ -124,7 +124,7 @@ async def on_message(message):
         await client.send_message(message.channel, message_to_send)
 
     elif message.content.startswith('!pascalGif'):
-        gifTumblr = envoiGifTumblr()
+        gifTumblr = envoiImageTumblr(tumblrGif)
         await client.send_message(message.channel, gifTumblr)
 
     elif message.content.startswith('!pascalFail'):
@@ -135,7 +135,7 @@ async def on_message(message):
 
     elif message.content.startswith('!pascalFaisNousVoyager'):
         for i in range(0, 10):
-            imageTumblr = envoiImageTumblr()
+            imageTumblr = envoiImageTumblr(tumblrImage)
             await client.send_message(message.channel, imageTumblr)
             await asyncio.sleep(1)
 
