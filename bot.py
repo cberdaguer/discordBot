@@ -55,7 +55,6 @@ def anneeAleatoire():
 def creerCheminEnvoi(PaddressTumblr):
     annee = anneeAleatoire()
     mois = moisAleatoire()
-
     chaineEnvoi = PaddressTumblr + "/" + annee + "/" + str(mois)
     try:
         r = requests.get(chaineEnvoi)
@@ -91,15 +90,12 @@ def testRequete(PadressTumblr):
     else:
         return tab
 
-
 @client.event
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
     print('------')
-
-
 
 @client.event
 async def on_message(message):
@@ -161,7 +157,6 @@ async def on_message(message):
     elif message.content.startswith('!finger'):
         await client.send_message(message.channel, urlGif)
 
-
     elif message.content.startswith('!pascalOnVeutDuBouleSaMere'):
         i = 0
         while i < 10:
@@ -176,17 +171,7 @@ async def on_message(message):
             await asyncio.sleep(1)
             i += 1
         await client.send_message(message.channel, 'ayé yé fini !!')
-
-    elif message.content.startswith('!appelATemoin'):
-        await client.send_message(message.channel, 'Vous êtes un Cassos ? Vous avez abandonnez votre gamin dans un foyer car vous étiez trop bourré pour vous en occuper ? Il vous manque la moitié des dents et vous portez des chemises dragons ? N\'attendez plus et appelez nous. Nous sommes la pour vous ridiculisez devant la France entière et ce moquer de votre consanguinité élévé ! Contactez nous à : niquetamerelecassosetfaisnousdelaudience@nrj12.fdp.com')
-
-    elif message.content.startswith('!pascalMoule'):
-        i = 0
-        while i < 5:
-            await client.send_message(message.channel, '!randmoule')
-            await asyncio.sleep(2)
-            i += 1
-
+    
     elif message.content.startswith('!help'):
         await client.send_message(message.channel, 'Je suis aussi utile que les sauts en parachute que je propose aux cassos, mais je sais faire ça: \n !merciPascal: Affiche 5 Bm aléatoire. \n !pascalMoule: Affiche 5 moules béantes aléatoires. \n !pascalOnVeutToutVoir: Affiche 10 grogniasses aléatoires de tout horizon.\n!pascalFaisPeterDuHardSaMereLaTepu: DISCLAIMER --> Be careful avec ça...\n!finger: Essaie tu verras.\n!pascalDuGifSalePourVincent: Pour mon pote vincent le sale.\n!pascalFaisPeterDuGif: 25 gif de boobs tout mignion tout gros.\n!pascalGif: Envoi un gif marrant (askip).\n!pascalFaisNousVoyager: Envoi 10 belles images (inchallah) \n\nPs: Au fait si tu poste une insulte je te défonce ok?')
 
