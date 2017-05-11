@@ -66,24 +66,23 @@ def creerCheminEnvoi(PaddressTumblr):
 
 nombrePhrase = len(string_reponse_pascal)
 
-def envoiImageTumblr(PaddressTumblr):
-
+def envoiImageTumblr(PadressTumblr):
     tab = []
-    retour = creerCheminEnvoi(PaddressTumblr)
+    retour = creerCheminEnvoi(PadressTumblr)
     soup = BeautifulSoup(retour.content, "html.parser")
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
-            print(p.get("data-imageurl"))
-            tab.append(p.get("data-imageurl"))
-
+        print(p.get("data-imageurl"))
+            
+        tab.append(p.get("data-imageurl"))
     if(len(tab)== 0):
-        envoiImageTumblr(PaddressTumblr)
+        envoiImageTumblr(PadressTumblr)
     else:
         tailleTab = len(tab) - 1    
         print(tailleTab)
-        chiffreRand = generenombreAleatoire(tailleTab)  
-        print("CHIFFRE TIRE :", chiffreRand)  
-        string = tab[chiffreRand]    
-        print("JE SUIS LA CHAINE ::::::::", string)
+        chiffreRand = generenombreAleatoire(tailleTab)
+    
+        string = tab[chiffreRand]
+        print(string.replace("250.","500."))
         return string.replace("250.","500.")
 
 def envoiFailTumblr():
