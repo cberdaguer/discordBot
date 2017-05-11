@@ -72,7 +72,7 @@ def envoiImageTumblr(PaddressTumblr):
     retour = creerCheminEnvoi(PaddressTumblr)
     soup = BeautifulSoup(retour.content, "html.parser")
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
-                        
+            print(p.get("data-imageurl"))
             tab.append(p.get("data-imageurl"))
 
     if(len(tab)== 0):
