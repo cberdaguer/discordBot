@@ -83,7 +83,8 @@ def envoiImageTumblr(PadressTumblr):
     
         string = tab[chiffreRand]
         print(string.replace("250.","500."))
-        return string.replace("250.","500.")
+        stringModifie = string.replace("250.","500.")
+        return stringModifie
 
 def envoiFailTumblr():
     soup = BeautifulSoup(rTumblrFail.content, "html.parser")
@@ -129,10 +130,9 @@ async def on_message(message):
         await client.send_message(message.channel, gifTumblr)
 
     elif message.content.startswith('!pascalFail'):
-        FailTumblr = ""
-        while(FailTumblr == ""):
-            FailTumblr = envoiImageTumblr(tumblrFail)
-            print(FailTumblr)
+        
+        FailTumblr = envoiImageTumblr(tumblrFail)
+        print(FailTumblr)
         await client.send_message(message.channel, FailTumblr)
 
     elif message.content.startswith('!pascalFaisNousVoyager'):
