@@ -129,8 +129,10 @@ async def on_message(message):
         await client.send_message(message.channel, gifTumblr)
 
     elif message.content.startswith('!pascalFail'):
-        FailTumblr = envoiImageTumblr(tumblrFail)
-        print(FailTumblr)
+        FailTumblr = ""
+        while(FailTumblr == ""):
+            FailTumblr = envoiImageTumblr(tumblrFail)
+            print(FailTumblr)
         await client.send_message(message.channel, FailTumblr)
 
     elif message.content.startswith('!pascalFaisNousVoyager'):
