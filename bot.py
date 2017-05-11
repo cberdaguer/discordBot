@@ -9,9 +9,15 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-rTumblrGif = requests.get("http://wtf-fun-gifs.tumblr.com/archive")
-rTumblrImage = requests.get("http://addictedtophoto.tumblr.com/archive")
-rTumblrFail = requests.get("http://epicfails-posts.tumblr.com/archive")
+
+listAnnee = ['2014', '2015', '2016', '2017']
+
+tumblrGif = "http://wtf-fun-gifs.tumblr.com/archive"
+tumblrImage = "http://addictedtophoto.tumblr.com/archive"
+tumblrFail = "http://epicfails-posts.tumblr.com/archive"
+rTumblrGif = requests.get(tumblrGif)
+rTumblrImage = requests.get(tumblrImage)
+rTumblrFail = requests.get(tumblrFail)
 
 token = os.environ['token']
 string_a_insulte = ["connard", "enculé", "encule", "pûte", "gourgandine", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
@@ -39,40 +45,47 @@ def findInsult(message):
 def generenombreAleatoire(nombre):
     return randint(0, nombre)
 
+def moisAleatoire():
+    return randint(1, 12)
+
+def anneeAleatoire():
+    annee = generenombreAleatoire(len(listAnnee) - 1)
+    return listAnnee[annee]
+
+def creerCheminEnvoi(PaddressTumblr):
+    annee = anneeAleatoire()
+    mois = moisAleatoire()
+
+    chaineEnvoi = PaddressTumblr + "/" + annee + "/" + str(mois)
+    try:
+        r = requests.get(chaineEnvoi)
+        return r
+    except error_get:
+        print(error_get)
+        return 10
+
 nombrePhrase = len(string_reponse_pascal)
 
-def envoiImageTumblr():
-    soup = BeautifulSoup(rTumblrImage.content, "html.parser")
+def envoiImageTumblr(PaddressTumblr):
+
+    retour = 10
+    while(retour == 10):
+        retour = creerCheminEnvoi(PaddressTumblr)
+    
+    soup = BeautifulSoup(retour.content, "html.parser")
     tab = []
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
         tab.append(p.get("data-imageurl"))    
 
-    tailleTab = len(tab)
-    print("TAILLE TABLEAU", tailleTab)
+    tailleTab = len(tab) - 1    
 
     chiffreRand = generenombreAleatoire(tailleTab)
-    print("Chiffre RAND:", chiffreRand)
-
+    
     string = tab[chiffreRand]
-    stringBis = string[0: len(string) - 7]
-    stringBis += "500.jpg"
-   
-    return stringBis
+    
+    return string.replace("250.","500.")
 
-def envoiGifTumblr():
-    soup = BeautifulSoup(rTumblrGif.content, "html.parser")
-    tabGif = []
-    for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
-        tabGif.append(p.get("data-imageurl"))
-    isOk = 1
-    tailleTab = len(tabGif)    
-    chiffreRand = generenombreAleatoire(tailleTab)
-    while(isOk != 0):
-        if(chiffreRand < tailleTab):
-            isOk = 0
-            return tabGif[chiffreRand]
-        else:
-            chiffreRand = generenombreAleatoire(tailleTab)
+
 
 def envoiFailTumblr():
     soup = BeautifulSoup(rTumblrFail.content, "html.parser")
@@ -118,7 +131,7 @@ async def on_message(message):
         await client.send_message(message.channel, gifTumblr)
 
     elif message.content.startswith('!pascalFail'):
-        FailTumblr = envoiFailTumblr()
+        FailTumblr = envoiImageTumblr(tumblrFail)
         await client.send_message(message.channel, FailTumblr)
 
     elif message.content.startswith('!pascalFaisNousVoyager'):
