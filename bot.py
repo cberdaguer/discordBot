@@ -78,7 +78,7 @@ def envoiImageTumblr(PaddressTumblr):
         print(p.get("data-imageurl"))
         tab.append(p.get("data-imageurl"))    
 
-    print(tailleTab)
+    
     tailleTab = len(tab) - 1    
     print(tailleTab)
     chiffreRand = generenombreAleatoire(tailleTab)
