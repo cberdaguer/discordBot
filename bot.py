@@ -69,6 +69,7 @@ nombrePhrase = len(string_reponse_pascal)
 def envoiImageTumblr(PadressTumblr):
     tab = []
     retour = creerCheminEnvoi(PadressTumblr)
+    stringModifie = None
     soup = BeautifulSoup(retour.content, "html.parser")
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
         print(p.get("data-imageurl"))
@@ -85,7 +86,7 @@ def envoiImageTumblr(PadressTumblr):
         #print(string.replace("250.","500."))
         stringModifie = string.replace("250.","500.")
         print(stringModifie)
-        return stringModifie
+    return stringModifie
 
 def envoiFailTumblr():
     soup = BeautifulSoup(rTumblrFail.content, "html.parser")
@@ -132,7 +133,7 @@ async def on_message(message):
 
     elif message.content.startswith('!pascalFail'):
         
-        await FailTumblr = envoiImageTumblr(tumblrFail)
+        FailTumblr = envoiImageTumblr(tumblrFail)
         print(FailTumblr)
         await client.send_message(message.channel, FailTumblr)
 
