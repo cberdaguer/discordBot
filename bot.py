@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 rTumblrGif = requests.get("http://wtf-fun-gifs.tumblr.com/archive")
 rTumblrImage = requests.get("http://addictedtophoto.tumblr.com/archive")
+rTumblrFail = requests.get("http://epicfails-posts.tumblr.com/archive")
 
 token = os.environ['token']
 string_a_insulte = ["connard", "enculé", "encule", "pûte", "gourgandine", "pd", "batard", "salaud", "pute", "salope", "fdp", "fils de pute", "merde", "wesh"]
@@ -62,8 +63,7 @@ def envoiGifTumblr():
     soup = BeautifulSoup(rTumblrGif.content, "html.parser")
     tabGif = []
     for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
-        tabGif.append(p.get("data-imageurl"))    
-
+        tabGif.append(p.get("data-imageurl"))
     isOk = 1
     tailleTab = len(tabGif)    
     chiffreRand = generenombreAleatoire(tailleTab)
@@ -73,11 +73,21 @@ def envoiGifTumblr():
             return tabGif[chiffreRand]
         else:
             chiffreRand = generenombreAleatoire(tailleTab)
-    
 
-    
-
-
+def envoiFailTumblr():
+    soup = BeautifulSoup(rTumblrFail.content, "html.parser")
+    tabFail = []
+    for p in soup.find_all("div",attrs = {"class": "post_thumbnail_container has_imageurl"}):
+        tabFail.append(p.get("data-imageurl"))
+    isOk = 1
+    tailleTab = len(tabFail)    
+    chiffreRand = generenombreAleatoire(tailleTab)
+    while(isOk != 0):
+        if(chiffreRand < tailleTab):
+            isOk = 0
+            return tabFail[chiffreRand]
+        else:
+            chiffreRand = generenombreAleatoire(tailleTab)
 
 @client.event
 async def on_ready():
@@ -106,6 +116,10 @@ async def on_message(message):
     elif message.content.startswith('!pascalGif'):
         gifTumblr = envoiGifTumblr()
         await client.send_message(message.channel, gifTumblr)
+
+    elif message.content.startswith('!pascalFail'):
+        FailTumblr = envoiFailTumblr()
+        await client.send_message(message.channel, FailTumblr)
 
     elif message.content.startswith('!pascalFaisNousVoyager'):
         for i in range(0, 10):
