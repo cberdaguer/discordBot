@@ -82,8 +82,9 @@ def envoiImageTumblr(PadressTumblr):
         chiffreRand = generenombreAleatoire(tailleTab)
     
         string = tab[chiffreRand]
-        print(string.replace("250.","500."))
+        #print(string.replace("250.","500."))
         stringModifie = string.replace("250.","500.")
+        print(stringModifie)
         return stringModifie
 
 def envoiFailTumblr():
