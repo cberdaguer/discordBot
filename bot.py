@@ -80,7 +80,8 @@ def envoiImageTumblr(PaddressTumblr):
     else:
         tailleTab = len(tab) - 1    
         print(tailleTab)
-        chiffreRand = generenombreAleatoire(tailleTab)    
+        chiffreRand = generenombreAleatoire(tailleTab)  
+        print("CHIFFRE TIRE :", chiffreRand)  
         string = tab[chiffreRand]    
         print("JE SUIS LA CHAINE ::::::::", string)
         return string.replace("250.","500.")
